@@ -77,6 +77,17 @@ summary{cursor:pointer;font-weight:700}details p{color:var(--muted);margin:10px 
 footer{padding:36px 0 48px;color:var(--muted);font-size:14px;text-align:center}
 .float{position:fixed;right:16px;bottom:16px;z-index:9;box-shadow:0 12px 30px #0003}
 @media(max-width:860px){.hero{grid-template-columns:1fr;padding:40px 20px}.preview{transform:none}.pains,.grid,.steps{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr}}
+/* Celular: versão clara, que chama mais atenção que o bloco escuro */
+@media(max-width:860px){
+ .hero,.final{background:radial-gradient(500px 300px at 100% 0,#00c8ff22,transparent 70%),linear-gradient(180deg,#fff,#eaf3ff);color:var(--navy);border:1px solid #d6e5fb;box-shadow:0 18px 40px #0968f614}
+ .hero .eyebrow,.final .eyebrow{color:var(--blue)}
+ .lead,.final p{color:var(--muted)}.proof{color:#4f6386}.final h2{color:var(--navy)}
+ .btn-line{border-color:var(--navy);color:var(--navy)}
+ .preview{box-shadow:0 14px 34px #0968f61f;border:1px solid var(--line);padding:16px}
+ .preview header{display:none}.preview .slot:nth-of-type(n+3){display:none}
+ .stat{border-left-width:3px}
+ .float{width:56px;height:56px;padding:0;font-size:0;border-radius:50%}.float:before{content:"💬";font-size:24px}
+}
 @media(max-width:560px){.pains,.grid,.steps{grid-template-columns:1fr}.local{grid-template-columns:1fr;text-align:center}.k-big{margin:0 auto}.top .btn-small{display:none}}
 @media(prefers-reduced-motion:reduce){.btn{transition:none}}
 </style>
