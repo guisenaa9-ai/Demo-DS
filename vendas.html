@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kryon Barber · Sistema para barbearias</title>
+<meta name="description" content="Agenda online, caixa, comissões e indicadores da sua barbearia em um só lugar. Teste a demonstração.">
+<meta property="og:title" content="Kryon Barber · Sistema para barbearias">
+<meta property="og:description" content="Agenda online 24h, caixa, comissões automáticas e área do barbeiro. Veja a demonstração.">
+<meta property="og:image" content="https://guisenaa9-ai.github.io/Demo-DS/icones/icone-512.png">
+<meta name="theme-color" content="#18392c">
+<link rel="icon" href="icones/icone-192.png">
+<link rel="stylesheet" href="pole.css?v=services-51">
+<style>
+:root{--ink:#18392c;--ink2:#244f3d;--gold:#c49242;--gold2:#e8c27a;--cream:#f7f5ef;--paper:#fffefa;--muted:#5d6b62;--line:#e4ded1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.14em;font-size:14px;text-decoration:none}
+.logo b{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:14px 22px;font-weight:700;text-decoration:none;border:2px solid transparent;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px #10261f26}
+.btn-gold{background:var(--gold);color:#1b1206}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-line{border-color:#ffffff66;color:#fff}
+.btn-small{padding:9px 16px;font-size:14px}
+.hero{background:radial-gradient(1200px 500px at 85% -10%,#2f6a52 0,transparent 60%),var(--ink);color:#fff;border-radius:28px;padding:56px 28px;display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;overflow:hidden}
+.eyebrow{color:var(--gold2);letter-spacing:.18em;font-size:12px;font-weight:700;text-transform:uppercase}
+h1{font:700 clamp(32px,5vw,52px)/1.08 Georgia,"Times New Roman",serif;margin:12px 0 16px}
+h1 em{color:var(--gold2);font-style:italic}
+.lead{color:#d9e4dd;font-size:18px;max-width:34em}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.proof{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;color:#b9cbbf;font-size:14px}
+.preview{position:relative;background:var(--paper);color:var(--ink);border-radius:20px;padding:18px;box-shadow:0 30px 60px #0007;transform:rotate(1.5deg)}
+.preview header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.preview header strong{font-size:13px;letter-spacing:.12em}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:10px 12px;background:#fff}
+.stat span{display:block;font-size:12px;color:var(--muted)}.stat b{font:700 22px Georgia,serif}
+.slot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding:9px 2px;font-size:14px}
+.slot em{font-style:normal;font-size:12px;border-radius:999px;padding:3px 9px;background:#e9f2ec;color:#24603f}
+.slot em.wait{background:#fdf1df;color:#8a5b31}
+section{padding:64px 0 0}
+h2{font:700 clamp(26px,3.6vw,38px)/1.15 Georgia,serif;margin:8px 0 12px}
+.sub{color:var(--muted);max-width:40em}
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.pain{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px}
+.pain s{color:#9b473b;text-decoration-thickness:2px}
+.pain p{margin:8px 0 0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.feat{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px}
+.feat i{font-style:normal;font-size:26px}
+.feat h3{margin:8px 0 6px;font-size:18px}.feat p{margin:0;color:var(--muted);font-size:15px}
+.local{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:#fdf6ea;border:1px solid #e7c9a0;border-radius:22px;padding:26px;margin-top:64px}
+.local .barber-pole{transform:scale(1.6);margin:30px 22px 14px}
+.local p{margin:6px 0 0;color:#6b5434}
+.plans{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:26px;max-width:820px}
+.plan{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;display:flex;flex-direction:column}
+.plan.best{border:2px solid var(--gold);box-shadow:0 18px 40px #c4924226;position:relative}
+.tag{position:absolute;top:-13px;left:24px;background:var(--gold);color:#1b1206;font-size:12px;font-weight:800;border-radius:999px;padding:4px 12px}
+.price{font:700 46px/1 Georgia,serif;margin:12px 0 4px}.price small{font:600 16px system-ui;color:var(--muted)}
+.plan ul{padding:0;margin:16px 0 22px;list-style:none;flex:1}.plan li{padding:6px 0 6px 26px;position:relative}
+.plan li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
+.setup{margin-top:16px;color:var(--muted);max-width:820px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px;counter-reset:s}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px}
+.step:before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;font-weight:800}
+.step h3{margin:12px 0 4px}.step p{margin:0;color:var(--muted)}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:10px}
+summary{cursor:pointer;font-weight:700}details p{color:var(--muted);margin:10px 0 0}
+.final{background:var(--ink);color:#fff;border-radius:28px;padding:48px 28px;text-align:center;margin-top:72px}
+.final p{color:#cfdcd3}.final .actions{justify-content:center}
+footer{padding:36px 0 48px;color:var(--muted);font-size:14px;text-align:center}
+.float{position:fixed;right:16px;bottom:16px;z-index:9;box-shadow:0 12px 30px #0003}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding:40px 20px}.preview{transform:none}.pains,.grid,.steps{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr}}
+@media(max-width:560px){.pains,.grid,.steps{grid-template-columns:1fr}.local{grid-template-columns:1fr;text-align:center}.local .barber-pole{margin:30px auto 14px}.top .btn-small{display:none}}
+@media(prefers-reduced-motion:reduce){.btn{transition:none}}
+</style>
+<body>
+<div class="wrap">
+<nav class="top"><a class="logo" href="#"><span class="barber-pole" aria-hidden="true" style="transform:scale(.7);margin:10px -2px 0"></span>KRYON <b>BARBER</b></a><a class="btn btn-dark btn-small" data-whatsapp href="#">Falar no WhatsApp</a></nav>
+
+<header class="hero">
+ <div>
+  <span class="eyebrow">Sistema para barbearias</span>
+  <h1>Sua barbearia <em>organizada</em>, do agendamento ao caixa.</h1>
+  <p class="lead">Seus clientes marcam horário pelo celular a qualquer hora. Você acompanha agenda, caixa, comissões e resultados num painel simples — sem caderno, sem planilha.</p>
+  <div class="actions"><a class="btn btn-gold" href="./">Ver a demonstração ↗</a><a class="btn btn-line" data-whatsapp href="#">Quero para minha barbearia</a></div>
+  <div class="proof"><span>✓ Funciona no celular e no computador</span><span>✓ Sem instalar nada</span><span>✓ Horário do Amazonas</span></div>
+ </div>
+ <div class="preview" aria-hidden="true">
+  <header><span class="barber-pole"></span><strong>PAINEL DO CHEFE · HOJE</strong></header>
+  <div class="stats"><div class="stat"><span>Confirmados</span><b>14</b></div><div class="stat"><span>Recebido</span><b>R$ 612</b></div><div class="stat"><span>Ticket médio</span><b>R$ 43</b></div><div class="stat"><span>Faltas</span><b>0</b></div></div>
+  <div class="slot"><span>09:00 · Lucas — Corte</span><em>Concluído</em></div>
+  <div class="slot"><span>10:30 · Pedro — Corte + Barba</span><em>Concluído</em></div>
+  <div class="slot"><span>14:00 · Mateus — Degradê</span><em class="wait">Aguardando</em></div>
+ </div>
+</header>
+
+<section>
+ <span class="eyebrow" style="color:var(--gold)">O dia a dia sem sistema</span>
+ <h2>Quanto custa um horário vazio?</h2>
+ <div class="pains">
+  <div class="pain"><strong><s>WhatsApp lotado de “tem horário?”</s></strong><p>O cliente vê os horários livres e marca sozinho, 24 horas por dia. Você só atende.</p></div>
+  <div class="pain"><strong><s>Conta de comissão no fim do mês</s></strong><p>Cada atendimento pago já calcula a comissão do barbeiro. Relatório pronto, sem discussão.</p></div>
+  <div class="pain"><strong><s>Caixa que não fecha</s></strong><p>Abertura, despesas, retiradas e o que entrou em dinheiro, Pix e cartão — separados e conferidos.</p></div>
+ </div>
+</section>
+
+<section>
+ <span class="eyebrow" style="color:var(--gold)">Tudo incluso</span>
+ <h2>Feito para o jeito que a barbearia funciona</h2>
+ <div class="grid">
+  <div class="feat"><i>📅</i><h3>Agenda online 24h</h3><p>Cliente escolhe serviço, barbeiro e horário. Pode escolher “sem preferência” e o sistema distribui.</p></div>
+  <div class="feat"><i>💈</i><h3>Painel do chefe</h3><p>Agenda do dia, chegada, atendimento, extras, descontos e formas de pagamento.</p></div>
+  <div class="feat"><i>💰</i><h3>Caixa diário</h3><p>Saldo esperado na gaveta, Pix e cartão à parte, despesas e fechamento do dia.</p></div>
+  <div class="feat"><i>✂️</i><h3>Comissões automáticas</h3><p>Porcentagem por barbeiro, relatório por período e exportação para planilha.</p></div>
+  <div class="feat"><i>📊</i><h3>Indicadores (BI)</h3><p>Serviços mais vendidos, horários de pico, faturamento e taxa de cancelamento.</p></div>
+  <div class="feat"><i>🧔</i><h3>Área do barbeiro</h3><p>Cada barbeiro vê a própria agenda e quanto já ganhou de comissão.</p></div>
+  <div class="feat"><i>🎁</i><h3>Fidelidade</h3><p>Opcional: a cada X atendimentos, o cliente ganha um grátis. Ele acompanha o cartão pelo celular.</p></div>
+  <div class="feat"><i>🗓️</i><h3>Folgas e feriados</h3><p>Feche a agenda quando quiser e avise os clientes afetados pelo WhatsApp com um toque.</p></div>
+  <div class="feat"><i>🔒</i><h3>Seguro e dentro da LGPD</h3><p>Verificação em duas etapas no painel, proteção anti-robô e cliente pode excluir os próprios dados.</p></div>
+ </div>
+</section>
+
+<div class="local"><span class="barber-pole" aria-hidden="true"></span><div><h2 style="margin:0">Implantação feita com você</h2><p>A gente cadastra seus serviços, barbeiros e horários, coloca no ar com o nome da sua barbearia e treina a equipe. Suporte no horário do Amazonas.</p></div></div>
+
+<section id="precos">
+ <span class="eyebrow" style="color:var(--gold)">Planos</span>
+ <h2>Preço de barbearia, não de software caro</h2>
+ <div class="plans">
+  <div class="plan"><h3>Essencial</h3><p class="sub">Para barbearias de até 3 barbeiros.</p><div class="price">R$ 69<small>/mês</small></div><ul><li>Agenda online e app no celular</li><li>Painel do chefe e caixa</li><li>Comissões e indicadores</li><li>Área do barbeiro e fidelidade</li></ul><a class="btn btn-dark" data-whatsapp data-plan="Essencial (R$ 69/mês)" href="#">Quero o Essencial</a></div>
+  <div class="plan best"><span class="tag">MAIS COMPLETO</span><h3>Equipe</h3><p class="sub">Para barbearias com 4 barbeiros ou mais.</p><div class="price">R$ 99<small>/mês</small></div><ul><li>Tudo do Essencial</li><li>Barbeiros sem limite</li><li>Atendimento prioritário</li><li>Ajuda para configurar novos serviços</li></ul><a class="btn btn-gold" data-whatsapp data-plan="Equipe (R$ 99/mês)" href="#">Quero o Equipe</a></div>
+ </div>
+ <p class="setup"><strong>Implantação: R$ 390, pagamento único.</strong> Inclui cadastro de serviços e barbeiros, horários, site com o nome da sua barbearia e treinamento da equipe.</p>
+</section>
+
+<section>
+ <span class="eyebrow" style="color:var(--gold)">Como começar</span>
+ <h2>No ar em poucos dias</h2>
+ <div class="steps">
+  <div class="step"><h3>Conversa rápida</h3><p>Você conta como a barbearia funciona: serviços, equipe e horários.</p></div>
+  <div class="step"><h3>Implantação</h3><p>A gente configura tudo com o nome e as informações da sua barbearia.</p></div>
+  <div class="step"><h3>Clientes agendando</h3><p>Você divulga o link no Instagram e no WhatsApp e acompanha pelo painel.</p></div>
+ </div>
+</section>
+
+<section>
+ <span class="eyebrow" style="color:var(--gold)">Dúvidas</span>
+ <h2>Perguntas frequentes</h2>
+ <details><summary>Preciso instalar alguma coisa?</summary><p>Não. Funciona no navegador do celular e do computador. Se quiser, o cliente e o chefe podem instalar como app na tela inicial.</p></details>
+ <details><summary>Meus clientes precisam criar conta?</summary><p>Para agendar pelo site, sim — é rápido e evita reservas falsas. Clientes de balcão você cadastra pelo painel.</p></details>
+ <details><summary>E se um cliente faltar ou cancelar?</summary><p>O cliente cancela ou remarca pelo celular até 1 hora antes e o horário volta a ficar livre. Faltas ficam registradas no histórico.</p></details>
+ <details><summary>Os dados da minha barbearia ficam seguros?</summary><p>Cada barbearia tem seu próprio banco de dados. O painel exige senha e código do celular, e cada cliente só vê as próprias reservas.</p></details>
+ <details><summary>Posso testar antes?</summary><p>Sim. Abra a <a href="./">demonstração</a> com uma barbearia de exemplo e chame no WhatsApp para ver o painel do chefe funcionando.</p></details>
+</section>
+
+<div class="final"><span class="eyebrow">Kryon Barber</span><h2>Vamos colocar sua barbearia na agenda online?</h2><p>Chame no WhatsApp e veja o sistema funcionando com a sua realidade.</p><div class="actions"><a class="btn btn-gold" data-whatsapp href="#">Falar no WhatsApp</a><a class="btn btn-line" href="./">Ver a demonstração</a></div></div>
+<footer>Kryon · Tecnologia que impulsiona · © 2026</footer>
+</div>
+<a class="btn btn-gold float" data-whatsapp href="#" aria-label="Falar no WhatsApp">💬 WhatsApp</a>
+<script src="vendas.js?v=1"></script>
+</body>
+</html>
